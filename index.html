@@ -38,9 +38,19 @@
 
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
 
+  /* Language switch */
+  .lang-bar { display: flex; justify-content: flex-end; padding-top: 1.25rem; }
+  .lang-switch { display: inline-flex; border: 2px solid var(--ledger); border-radius: 6px; overflow: hidden; }
+  .lang-switch button {
+    font: inherit; font-weight: 600; font-size: .95rem; padding: .35rem .9rem; border: 0; cursor: pointer;
+    background: transparent; color: var(--ledger);
+  }
+  .lang-switch button[aria-pressed="true"] { background: var(--ledger); color: var(--white); }
+  .lang-switch button:not([aria-pressed="true"]):hover { background: var(--ledger-soft); }
+
   /* Hero */
-  .hero { background: var(--white); border-bottom: 1px solid var(--line); padding: 4rem 0 3.5rem; }
-  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 3.5rem; align-items: end; }
+  .hero { background: var(--white); border-bottom: 1px solid var(--line); padding: 0 0 3.5rem; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 3.5rem; align-items: end; padding-top: 2rem; }
   .hero h1 { font-size: clamp(3rem, 8vw, 5.25rem); font-weight: 800; letter-spacing: -0.02em; }
   .hero .role { font-family: "Bricolage Grotesque", sans-serif; font-size: 1.5rem; font-weight: 500; line-height: 1.3; margin: 1rem 0 0; color: var(--ledger); }
   .hero .intro { margin: 1.25rem 0 0; max-width: 46ch; color: var(--ink-soft); }
@@ -116,8 +126,8 @@
   footer { border-top: 1px solid var(--line); padding: 2rem 0 3rem; color: var(--slate); font-size: .95rem; }
 
   @media (max-width: 860px) {
-    .hero { padding: 3rem 0 2.5rem; }
-    .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero { padding-bottom: 2.5rem; }
+    .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; padding-top: 1.25rem; }
     .layout { grid-template-columns: 1fr; gap: 3rem; }
   }
   @media (max-width: 520px) {
@@ -130,8 +140,8 @@
     body { background: #fff; font-size: 10.5pt; line-height: 1.45; }
     .hero { padding: 0 0 6mm; border-bottom: 2px solid var(--ink); }
     .hero h1 { font-size: 30pt; }
-    .hero-grid { grid-template-columns: 1fr; }
-    .steps-box, .no-print { display: none !important; }
+    .hero-grid { grid-template-columns: 1fr; padding-top: 0; }
+    .steps-box, .no-print, .lang-bar { display: none !important; }
     .contact a.btn { border: 0; padding: 0; background: none; color: var(--ink); }
     .contact a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; }
     main.wrap { padding-top: 6mm; padding-bottom: 0; }
@@ -147,27 +157,33 @@
 <body>
 
 <header class="hero">
+  <div class="wrap lang-bar">
+    <div class="lang-switch" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="es" aria-pressed="true">Español</button>
+      <button type="button" data-lang="en" aria-pressed="false">English</button>
+    </div>
+  </div>
   <div class="wrap hero-grid">
     <div>
       <h1>Ivom García</h1>
-      <p class="role">Gestión administrativa y operativa</p>
-      <p class="intro">Tecnóloga en Gestión de Negocios. Desde 2019 me encargo de que la administración de un negocio funcione en orden: facturación, documentos, cuentas, atención al cliente y coordinación de equipos. Trabajo 100&nbsp;% remoto desde Palmira, Colombia.</p>
+      <p class="role" data-i18n="role">Gestión administrativa y operativa</p>
+      <p class="intro" data-i18n="intro">Tecnóloga en Gestión de Negocios. Desde 2019 me encargo de que la administración de un negocio funcione en orden: facturación, documentos, cuentas, atención al cliente y coordinación de equipos. Trabajo 100&nbsp;% remoto desde Palmira, Colombia.</p>
       <ul class="contact">
-        <li><a class="btn" href="mailto:ivom.fernanda.garcia@gmail.com">Escríbeme</a></li>
+        <li><a class="btn" href="mailto:ivom.fernanda.garcia@gmail.com" data-i18n="email">Escríbeme</a></li>
         <li><a href="https://www.linkedin.com/in/ivomgarcia">LinkedIn</a></li>
         <li><a href="https://www.upwork.com/freelancers/~01c7ef2c855678846c">Upwork</a></li>
-        <li class="no-print"><button class="btn ghost" type="button" onclick="window.print()">Descargar PDF</button></li>
+        <li class="no-print"><button class="btn ghost" type="button" onclick="window.print()" data-i18n="pdf">Descargar PDF</button></li>
       </ul>
     </div>
 
     <div class="steps-box">
-      <ol class="steps" aria-label="Trayectoria profesional">
-        <li><span class="year">2019</span><span class="what">Asistente administrativa</span><span class="bar"></span></li>
-        <li><span class="year">2020</span><span class="what">Tesorera regional</span><span class="bar"></span></li>
-        <li><span class="year">2021</span><span class="what">Asistente virtual</span><span class="bar"></span></li>
-        <li><span class="year">Hoy</span><span class="what">Gestora de operaciones</span><span class="bar"></span></li>
+      <ol class="steps" data-i18n-label="stepsLabel" aria-label="Trayectoria profesional">
+        <li><span class="year">2019</span><span class="what" data-i18n="step1">Asistente administrativa</span><span class="bar"></span></li>
+        <li><span class="year">2020</span><span class="what" data-i18n="step2">Tesorera regional</span><span class="bar"></span></li>
+        <li><span class="year">2021</span><span class="what" data-i18n="step3">Asistente virtual</span><span class="bar"></span></li>
+        <li><span class="year" data-i18n="today">Hoy</span><span class="what" data-i18n="step4">Gestora de operaciones</span><span class="bar"></span></li>
       </ol>
-      <p class="steps-caption">Cada etapa sumó más responsabilidad administrativa y de equipo.</p>
+      <p class="steps-caption" data-i18n="stepsCaption">Cada etapa sumó más responsabilidad administrativa y de equipo.</p>
     </div>
   </div>
 </header>
@@ -176,95 +192,96 @@
   <div class="layout">
     <div>
       <section aria-labelledby="perfil">
-        <h2 id="perfil">Perfil profesional</h2>
-        <p class="summary">Soy una profesional administrativa con experiencia en empresas de Colombia y España. Empecé como asistente administrativa, llevé la tesorería de una región entera y hoy coordino la operación y el equipo de una empresa española en remoto. Lo que mejor hago es poner orden: que las facturas salgan a tiempo, que cada documento esté donde debe y que el equipo sepa qué hacer. Además uso herramientas de inteligencia artificial para automatizar tareas administrativas repetitivas.</p>
+        <h2 id="perfil" data-i18n="hProfile">Perfil profesional</h2>
+        <p class="summary" data-i18n="summary">Soy una profesional administrativa con experiencia en empresas de Colombia y España. Empecé como asistente administrativa, llevé la tesorería de una región entera y hoy coordino la operación y el equipo de una empresa española en remoto. Lo que mejor hago es poner orden: que las facturas salgan a tiempo, que cada documento esté donde debe y que el equipo sepa qué hacer. Además uso herramientas de inteligencia artificial para automatizar tareas administrativas repetitivas.</p>
         <ul class="areas">
-          <li><strong>Facturación y contabilidad básica</strong><span>Emisión y registro de facturas, soportes de ingresos y egresos, movimientos contables.</span></li>
-          <li><strong>Gestión documental</strong><span>Preparación, revisión y archivo de documentos comerciales y de comercio exterior.</span></li>
-          <li><strong>Coordinación de equipos</strong><span>Seguimiento de tareas y comunicación con equipos remotos de hasta cuatro personas.</span></li>
-          <li><strong>Atención al cliente</strong><span>Respuesta por escrito a clientes y resolución de incidencias con proveedores y almacén.</span></li>
+          <li data-i18n="area1"><strong>Facturación y contabilidad básica</strong><span>Emisión y registro de facturas, soportes de ingresos y egresos, movimientos contables.</span></li>
+          <li data-i18n="area2"><strong>Gestión documental</strong><span>Preparación, revisión y archivo de documentos comerciales y de comercio exterior.</span></li>
+          <li data-i18n="area3"><strong>Coordinación de equipos</strong><span>Seguimiento de tareas y comunicación con equipos remotos de hasta cuatro personas.</span></li>
+          <li data-i18n="area4"><strong>Atención al cliente</strong><span>Respuesta por escrito a clientes y resolución de incidencias con proveedores y almacén.</span></li>
         </ul>
       </section>
 
       <section aria-labelledby="experiencia">
-        <h2 id="experiencia">Experiencia</h2>
+        <h2 id="experiencia" data-i18n="hExperience">Experiencia</h2>
         <ol class="timeline" reversed>
           <li class="job current">
-            <h3>Gestora de operaciones y proyectos</h3>
-            <p class="org">InnovaTec Sensorización y Comunicación S.L., España (remoto)</p>
-            <p class="when">Noviembre 2021 – actualidad. Ingresé como asistente virtual.</p>
+            <h3 data-i18n="j1Title">Gestora de operaciones y proyectos</h3>
+            <p class="org" data-i18n="j1Org">InnovaTec Sensorización y Comunicación S.L., España (remoto)</p>
+            <p class="when" data-i18n="j1When">Noviembre 2021 – actualidad. Ingresé como asistente virtual.</p>
             <ul>
-              <li>Facturación del servicio y registro compartido con la dirección.</li>
-              <li>Coordinación de un equipo remoto de cuatro personas y seguimiento de tareas en ClickUp.</li>
-              <li>Elaboración de documentación de comercio exterior a partir de facturas comerciales y listas de empaque de proveedores.</li>
-              <li>Control de inventarios y reportes de ventas en Excel avanzado.</li>
-              <li>Atención por correo a clientes y coordinación con el almacén para resolver incidencias.</li>
-              <li>Automatización con IA de tareas administrativas: facturas, documentos e informes.</li>
+              <li data-i18n="j1a">Facturación del servicio y registro compartido con la dirección.</li>
+              <li data-i18n="j1b">Coordinación de un equipo remoto de cuatro personas y seguimiento de tareas en ClickUp.</li>
+              <li data-i18n="j1c">Elaboración de documentación de comercio exterior a partir de facturas comerciales y listas de empaque de proveedores.</li>
+              <li data-i18n="j1d">Control de inventarios y reportes de ventas en Excel avanzado.</li>
+              <li data-i18n="j1e">Atención por correo a clientes y coordinación con el almacén para resolver incidencias.</li>
+              <li data-i18n="j1f">Automatización con IA de tareas administrativas: facturas, documentos e informes.</li>
             </ul>
           </li>
 
           <li class="job current">
             <h3>Freelance</h3>
-            <p class="org">Upwork (remoto)</p>
-            <p class="when">Julio 2022 – actualidad</p>
+            <p class="org" data-i18n="j2Org">Upwork (remoto)</p>
+            <p class="when" data-i18n="j2When">Julio 2022 – actualidad</p>
             <ul>
-              <li>Diseño de una plantilla de contabilidad básica en Google Sheets para una pyme.</li>
-              <li>Traducción y adaptación de contenidos al español, y locución en español para proyectos de inteligencia artificial.</li>
+              <li data-i18n="j2a">Diseño de una plantilla de contabilidad básica en Google Sheets para una pyme.</li>
+              <li data-i18n="j2b">Traducción y adaptación de contenidos al español, y locución en español para proyectos de inteligencia artificial.</li>
             </ul>
           </li>
 
           <li class="job">
-            <h3>Tesorera regional (voluntariado)</h3>
-            <p class="org">Iglesia Gnóstica Cristiana Universal, región Valle Centro</p>
-            <p class="when">Agosto 2020 – diciembre 2022</p>
+            <h3 data-i18n="j3Title">Tesorera regional (voluntariado)</h3>
+            <p class="org" data-i18n="j3Org">Iglesia Gnóstica Cristiana Universal, región Valle Centro</p>
+            <p class="when" data-i18n="j3When">Agosto 2020 – diciembre 2022</p>
             <ul>
-              <li>Gestión financiera de la región: control de ingresos y egresos, soportes y movimientos contables.</li>
-              <li>Coordinación del equipo local de tesoreros.</li>
-              <li>Actualización de la plataforma virtual de usuarios de la región.</li>
+              <li data-i18n="j3a">Gestión financiera de la región: control de ingresos y egresos, soportes y movimientos contables.</li>
+              <li data-i18n="j3b">Coordinación del equipo local de tesoreros.</li>
+              <li data-i18n="j3c">Actualización de la plataforma virtual de usuarios de la región.</li>
             </ul>
           </li>
 
           <li class="job">
-            <h3>Asistente administrativa</h3>
+            <h3 data-i18n="j4Title">Asistente administrativa</h3>
             <p class="org">Huevos La Buena Cresta, Colombia</p>
-            <p class="when">Diciembre 2019 – marzo 2021</p>
+            <p class="when" data-i18n="j4When">Diciembre 2019 – marzo 2021</p>
             <ul>
-              <li>Registro de movimientos contables.</li>
-              <li>Atención al cliente.</li>
+              <li data-i18n="j4a">Registro de movimientos contables.</li>
+              <li data-i18n="j4b">Atención al cliente.</li>
             </ul>
           </li>
         </ol>
       </section>
 
       <section aria-labelledby="formacion">
-        <h2 id="formacion">Formación</h2>
+        <h2 id="formacion" data-i18n="hEducation">Formación</h2>
         <ul class="edu">
-          <li><strong>Tecnóloga en Gestión de Negocios</strong><span>Universidad Autónoma de Manizales, 2015</span></li>
-          <li><strong>Negocios Internacionales</strong><span>UNAD, pregrado a distancia, en curso</span></li>
-          <li><strong>Cursos complementarios</strong><span>Excel avanzado (2022), Power BI (2024), Asistente virtual y teletrabajo (2020), Importación de productos desde China (2023), Amazon FBA (2023–2024)</span></li>
+          <li data-i18n="edu1"><strong>Tecnóloga en Gestión de Negocios</strong><span>Universidad Autónoma de Manizales, 2015</span></li>
+          <li data-i18n="edu2"><strong>Negocios Internacionales</strong><span>UNAD, pregrado a distancia, en curso</span></li>
+          <li data-i18n="edu3"><strong>Cursos complementarios</strong><span>Excel avanzado (2022), Power BI (2024), Asistente virtual y teletrabajo (2020), Importación de productos desde China (2023), Amazon FBA (2023–2024)</span></li>
         </ul>
       </section>
     </div>
 
     <aside>
       <section aria-labelledby="competencias">
-        <h2 id="competencias">Competencias</h2>
+        <h2 id="competencias" data-i18n="hSkills">Competencias</h2>
         <ul>
-          <li>Facturación</li>
-          <li>Contabilidad básica</li>
-          <li>Gestión documental</li>
-          <li>Control de inventarios</li>
-          <li>Reportes y análisis en Excel</li>
-          <li>Coordinación de equipos</li>
-          <li>Atención al cliente por escrito</li>
-          <li>Automatización con IA</li>
+          <li data-i18n="s0">Gestión administrativa</li>
+          <li data-i18n="s1">Facturación</li>
+          <li data-i18n="s2">Contabilidad básica</li>
+          <li data-i18n="s3">Gestión documental</li>
+          <li data-i18n="s4">Control de inventarios</li>
+          <li data-i18n="s5">Reportes y análisis en Excel</li>
+          <li data-i18n="s6">Coordinación de equipos</li>
+          <li data-i18n="s7">Atención al cliente por escrito</li>
+          <li data-i18n="s8">Automatización con IA</li>
         </ul>
       </section>
 
       <section aria-labelledby="herramientas">
-        <h2 id="herramientas">Herramientas</h2>
+        <h2 id="herramientas" data-i18n="hTools">Herramientas</h2>
         <ul class="tags">
-          <li>Excel avanzado</li>
+          <li data-i18n="t1">Excel avanzado</li>
           <li>Google Workspace</li>
           <li>Microsoft Office</li>
           <li>Power BI</li>
@@ -273,23 +290,23 @@
           <li>Notion</li>
           <li>Asana</li>
           <li>Slack</li>
-          <li>Claude (IA)</li>
+          <li data-i18n="t2">Claude (IA)</li>
           <li>Canva</li>
         </ul>
       </section>
 
       <section aria-labelledby="idiomas">
-        <h2 id="idiomas">Idiomas</h2>
+        <h2 id="idiomas" data-i18n="hLanguages">Idiomas</h2>
         <ul>
-          <li>Español<span>Nativo</span></li>
-          <li>Inglés<span>Básico (A2)</span></li>
+          <li data-i18n="lang1">Español<span>Nativo</span></li>
+          <li data-i18n="lang2">Inglés<span>Básico (A2)</span></li>
         </ul>
       </section>
 
       <section aria-labelledby="proyecto">
-        <h2 id="proyecto">Negocio propio</h2>
+        <h2 id="proyecto" data-i18n="hBusiness">Negocio propio</h2>
         <ul>
-          <li>DEL'AS, desde 2020<span>Administración completa: compras, inventario, precios, ventas y contabilidad básica.</span></li>
+          <li data-i18n="biz">DEL'AS, desde 2020<span>Administración completa: compras, inventario, precios, ventas y contabilidad básica.</span></li>
         </ul>
       </section>
     </aside>
@@ -299,6 +316,107 @@
 <footer>
   <div class="wrap">Ivom Fernanda García Saac. Palmira, Valle del Cauca, Colombia.</div>
 </footer>
+
+<script>
+  // English copy. The Spanish copy lives in the HTML and is captured on load.
+  const EN = {
+    docTitle: "Ivom García | Administrative and operations management",
+    role: "Administrative and operations management",
+    intro: "Business Management Technologist. Since 2019 I have been keeping business administration in order: invoicing, documents, accounts, customer service and team coordination. Native Spanish speaker, working 100% remotely from Palmira, Colombia.",
+    email: "Email me",
+    pdf: "Download PDF",
+    stepsLabel: "Career path",
+    step1: "Administrative assistant",
+    step2: "Regional treasurer",
+    step3: "Virtual assistant",
+    today: "Today",
+    step4: "Operations manager",
+    stepsCaption: "Each stage added more administrative and team responsibility.",
+    hProfile: "Professional profile",
+    summary: "I am an administrative professional with experience in companies in Colombia and Spain. I started as an administrative assistant, managed the treasury of an entire region, and today I coordinate operations and the team of a Spanish company remotely. What I do best is bring order: invoices go out on time, every document is where it should be, and the team knows what to do. I also use artificial intelligence tools to automate repetitive administrative tasks.",
+    area1: "<strong>Invoicing and basic accounting</strong><span>Issuing and recording invoices, income and expense records, bookkeeping entries.</span>",
+    area2: "<strong>Document management</strong><span>Preparing, reviewing and filing commercial and foreign trade documents.</span>",
+    area3: "<strong>Team coordination</strong><span>Task follow-up and communication with remote teams of up to four people.</span>",
+    area4: "<strong>Customer service</strong><span>Written customer support and resolution of issues with suppliers and the warehouse.</span>",
+    hExperience: "Experience",
+    j1Title: "Operations and projects manager",
+    j1Org: "InnovaTec Sensorización y Comunicación S.L., Spain (remote)",
+    j1When: "November 2021 – present. Joined as a virtual assistant.",
+    j1a: "Service invoicing and records shared with management.",
+    j1b: "Coordination of a four-person remote team and task tracking in ClickUp.",
+    j1c: "Preparation of foreign trade documentation from suppliers' commercial invoices and packing lists.",
+    j1d: "Inventory control and sales reports in advanced Excel.",
+    j1e: "Customer service by email and coordination with the warehouse to resolve issues.",
+    j1f: "AI automation of administrative tasks: invoices, documents and reports.",
+    j2Org: "Upwork (remote)",
+    j2When: "July 2022 – present",
+    j2a: "Designed a basic accounting template in Google Sheets for a small business.",
+    j2b: "Translation and localization of content into Spanish, and Spanish voice recording for artificial intelligence projects.",
+    j3Title: "Regional treasurer (volunteer)",
+    j3Org: "Iglesia Gnóstica Cristiana Universal, Valle Centro region",
+    j3When: "August 2020 – December 2022",
+    j3a: "Regional financial management: income and expense control, supporting documents and bookkeeping entries.",
+    j3b: "Coordination of the local team of treasurers.",
+    j3c: "Updating the region's online member platform.",
+    j4Title: "Administrative assistant",
+    j4When: "December 2019 – March 2021",
+    j4a: "Recording bookkeeping entries.",
+    j4b: "Customer service.",
+    hEducation: "Education",
+    edu1: "<strong>Business Management Technologist</strong><span>Universidad Autónoma de Manizales, 2015</span>",
+    edu2: "<strong>International Business</strong><span>UNAD, distance bachelor's degree, in progress</span>",
+    edu3: "<strong>Additional courses</strong><span>Advanced Excel (2022), Power BI (2024), Virtual assistance and remote work (2020), Importing products from China (2023), Amazon FBA (2023–2024)</span>",
+    hSkills: "Skills",
+    s0: "Administrative management",
+    s1: "Invoicing",
+    s2: "Basic accounting",
+    s3: "Document management",
+    s4: "Inventory control",
+    s5: "Excel reporting and analysis",
+    s6: "Team coordination",
+    s7: "Written customer service",
+    s8: "AI automation",
+    hTools: "Tools",
+    t1: "Advanced Excel",
+    t2: "Claude (AI)",
+    hLanguages: "Languages",
+    lang1: "Spanish<span>Native</span>",
+    lang2: "English<span>Basic (A2)</span>",
+    hBusiness: "Own business",
+    biz: "DEL'AS, since 2020<span>Full administration: purchasing, inventory, pricing, sales and basic accounting.</span>"
+  };
+
+  const ES = { docTitle: document.title };
+  document.querySelectorAll("[data-i18n]").forEach(el => { ES[el.dataset.i18n] = el.innerHTML; });
+  document.querySelectorAll("[data-i18n-label]").forEach(el => { ES[el.dataset.i18nLabel] = el.getAttribute("aria-label"); });
+
+  function setLang(lang) {
+    const dict = lang === "en" ? EN : ES;
+    document.documentElement.lang = lang;
+    document.title = dict.docTitle;
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const value = dict[el.dataset.i18n];
+      if (value !== undefined) el.innerHTML = value;
+    });
+    document.querySelectorAll("[data-i18n-label]").forEach(el => {
+      el.setAttribute("aria-label", dict[el.dataset.i18nLabel]);
+    });
+    document.querySelectorAll(".lang-switch button").forEach(b => {
+      b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+    });
+    try { localStorage.setItem("cv-lang", lang); } catch (e) {}
+  }
+
+  document.querySelectorAll(".lang-switch button").forEach(b => {
+    b.addEventListener("click", () => setLang(b.dataset.lang));
+  });
+
+  // Choice order: ?lang= in the link, then the visitor's last choice, then the browser language.
+  let initial = new URLSearchParams(location.search).get("lang");
+  if (!initial) { try { initial = localStorage.getItem("cv-lang"); } catch (e) {} }
+  if (!initial) initial = (navigator.language || "es").toLowerCase().startsWith("es") ? "es" : "en";
+  if (initial === "en") setLang("en");
+</script>
 
 </body>
 </html>
