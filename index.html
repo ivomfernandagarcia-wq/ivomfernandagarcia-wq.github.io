@@ -61,6 +61,13 @@
   }
   .btn:hover { background: #185A4A; border-color: #185A4A; }
   .btn.ghost { background: transparent; color: var(--ledger); }
+  .mail { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+  .mail .btn { overflow-wrap: anywhere; }
+  .copy {
+    font: inherit; font-size: .9rem; font-weight: 600; padding: .35rem .7rem; border-radius: 6px; cursor: pointer;
+    border: 1px solid var(--line); background: var(--white); color: var(--ledger);
+  }
+  .copy:hover { background: var(--ledger-soft); }
   .btn.ghost:hover { background: var(--ledger-soft); }
 
   /* Career staircase: a real progression */
@@ -169,7 +176,10 @@
       <p class="role" data-i18n="role">Gestión administrativa y operativa</p>
       <p class="intro" data-i18n="intro">Tecnóloga en Gestión de Negocios. Desde 2019 me encargo de que la administración de un negocio funcione en orden: facturación, documentos, cuentas, atención al cliente y coordinación de equipos. Trabajo 100&nbsp;% remoto desde Palmira, Colombia.</p>
       <ul class="contact">
-        <li><a class="btn" href="mailto:ivom.fernanda.garcia@gmail.com" data-i18n="email">Escríbeme</a></li>
+        <li class="mail">
+          <a class="btn" href="mailto:ivom.fernanda.garcia@gmail.com">ivom.fernanda.garcia@gmail.com</a>
+          <button class="copy no-print" type="button" id="copy-email" data-i18n="copy">Copiar</button>
+        </li>
         <li><a href="https://www.linkedin.com/in/ivomgarcia">LinkedIn</a></li>
         <li><a href="https://www.upwork.com/freelancers/~01c7ef2c855678846c">Upwork</a></li>
         <li class="no-print"><button class="btn ghost" type="button" onclick="window.print()" data-i18n="pdf">Descargar PDF</button></li>
@@ -341,7 +351,8 @@
     docTitle: "Ivom García | Administrative and operations management",
     role: "Administrative and operations management",
     intro: "Business Management Technologist. Since 2019 I have been keeping business administration in order: invoicing, documents, accounts, customer service and team coordination. Native Spanish speaker, working 100% remotely from Palmira, Colombia.",
-    email: "Email me",
+    copy: "Copy",
+    copied: "Copied",
     pdf: "Download PDF",
     stepsLabel: "Career path",
     step1: "Administrative assistant",
@@ -431,6 +442,21 @@
 
   document.querySelectorAll(".lang-switch button").forEach(b => {
     b.addEventListener("click", () => setLang(b.dataset.lang));
+  });
+
+  const copyBtn = document.getElementById("copy-email");
+  copyBtn.addEventListener("click", async () => {
+    const address = "ivom.fernanda.garcia@gmail.com";
+    try {
+      await navigator.clipboard.writeText(address);
+    } catch (e) {
+      const tmp = document.createElement("textarea");
+      tmp.value = address; document.body.appendChild(tmp); tmp.select();
+      document.execCommand("copy"); tmp.remove();
+    }
+    const en = document.documentElement.lang === "en";
+    copyBtn.textContent = en ? EN.copied : "Copiado";
+    setTimeout(() => { copyBtn.textContent = en ? EN.copy : ES.copy; }, 2000);
   });
 
   // Choice order: ?lang= in the link, then the visitor's last choice, then the browser language.
