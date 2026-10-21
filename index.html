@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ivom García | Gestión administrativa y operativa</title>
+<meta name="description" content="Hoja de vida de Ivom García, Tecnóloga en Gestión de Negocios: gestión administrativa y operativa, facturación, gestión documental, contabilidad básica, atención al cliente y coordinación de equipos. Trabajo remoto desde Colombia.">
+<meta property="og:title" content="Ivom García | Gestión administrativa y operativa">
+<meta property="og:description" content="Tecnóloga en Gestión de Negocios. Administración, facturación, gestión documental y coordinación de equipos, en remoto desde Colombia.">
+<meta property="og:type" content="profile">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #14213D;
+    --ink-soft: #3A4762;
+    --slate: #5B6472;
+    --paper: #F6F8F7;
+    --line: #D6DDDA;
+    --ledger: #1F6F5C;
+    --ledger-soft: #E3EFEB;
+    --white: #FFFFFF;
+    --measure: 68ch;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 1.0625rem/1.6 "Public Sans", system-ui, sans-serif;
+  }
+  a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 3px solid var(--ledger); outline-offset: 3px; border-radius: 2px; }
+  h1, h2, h3 { font-family: "Bricolage Grotesque", system-ui, sans-serif; line-height: 1.1; margin: 0; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* Hero */
+  .hero { background: var(--white); border-bottom: 1px solid var(--line); padding: 4rem 0 3.5rem; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 3.5rem; align-items: end; }
+  .hero h1 { font-size: clamp(3rem, 8vw, 5.25rem); font-weight: 800; letter-spacing: -0.02em; }
+  .hero .role { font-family: "Bricolage Grotesque", sans-serif; font-size: 1.5rem; font-weight: 500; line-height: 1.3; margin: 1rem 0 0; color: var(--ledger); }
+  .hero .intro { margin: 1.25rem 0 0; max-width: 46ch; color: var(--ink-soft); }
+  .contact { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.5rem; margin: 2rem 0 0; padding: 0; list-style: none; }
+  .btn {
+    display: inline-block; padding: .6rem 1.1rem; border-radius: 6px; border: 2px solid var(--ledger);
+    background: var(--ledger); color: var(--white); font: inherit; font-weight: 600; text-decoration: none; cursor: pointer;
+  }
+  .btn:hover { background: #185A4A; border-color: #185A4A; }
+  .btn.ghost { background: transparent; color: var(--ledger); }
+  .btn.ghost:hover { background: var(--ledger-soft); }
+
+  /* Career staircase: a real progression */
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); align-items: end; gap: .5rem; }
+  .steps li { display: flex; flex-direction: column; justify-content: flex-end; }
+  .steps .bar { background: var(--ledger-soft); border-top: 4px solid var(--ledger); border-radius: 3px 3px 0 0; }
+  .steps li:nth-child(1) .bar { height: 48px; }
+  .steps li:nth-child(2) .bar { height: 88px; }
+  .steps li:nth-child(3) .bar { height: 128px; }
+  .steps li:nth-child(4) .bar { height: 172px; background: var(--ledger); }
+  .steps .year { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 1.15rem; margin-bottom: .2rem; }
+  .steps .what { font-size: .88rem; line-height: 1.3; color: var(--ink-soft); margin-bottom: .6rem; min-height: 3.4em; }
+  .steps-caption { margin: .9rem 0 0; font-size: .9rem; color: var(--slate); }
+  @media (prefers-reduced-motion: no-preference) {
+    .steps .bar { transform-origin: bottom; animation: rise .7s ease-out both; }
+    .steps li:nth-child(2) .bar { animation-delay: .15s; }
+    .steps li:nth-child(3) .bar { animation-delay: .3s; }
+    .steps li:nth-child(4) .bar { animation-delay: .45s; }
+    @keyframes rise { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+  }
+
+  /* Body layout */
+  main.wrap { padding-top: 3.5rem; padding-bottom: 4rem; }
+  .layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 4rem; }
+  section + section { margin-top: 3.5rem; }
+  h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 1.25rem; }
+  .summary { font-size: 1.15rem; line-height: 1.65; max-width: var(--measure); margin: 0; }
+  .areas { margin: 1.75rem 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 2rem; max-width: var(--measure); }
+  .areas li { padding-top: .75rem; border-top: 2px solid var(--ledger); }
+  .areas strong { display: block; font-family: "Bricolage Grotesque", sans-serif; font-size: 1.1rem; margin-bottom: .2rem; }
+  .areas span { color: var(--ink-soft); font-size: .98rem; }
+
+  /* Experience timeline */
+  .timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); }
+  .job { position: relative; padding: 0 0 2.25rem 1.75rem; max-width: var(--measure); }
+  .job:last-child { padding-bottom: 0; }
+  .job::before {
+    content: ""; position: absolute; left: -8px; top: .45rem;
+    width: 14px; height: 14px; border-radius: 50%; background: var(--paper); border: 2px solid var(--ledger);
+  }
+  .job.current::before { background: var(--ledger); }
+  .job h3 { font-size: 1.3rem; font-weight: 700; }
+  .job .org { margin: .2rem 0 0; font-weight: 600; color: var(--ink-soft); }
+  .job .when { margin: .1rem 0 .75rem; color: var(--slate); font-size: .95rem; }
+  .job ul { margin: 0; padding-left: 1.1rem; }
+  .job li + li { margin-top: .35rem; }
+
+  /* Sidebar */
+  aside section + section { margin-top: 2.5rem; }
+  aside h2 { font-size: 1.25rem; margin-bottom: .75rem; }
+  aside ul { list-style: none; margin: 0; padding: 0; }
+  aside li { padding: .4rem 0; border-bottom: 1px solid var(--line); font-size: .98rem; }
+  aside li span { display: block; color: var(--slate); font-size: .9rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .tags li { border: 1px solid var(--line); background: var(--white); border-radius: 4px; padding: .2rem .55rem; font-size: .9rem; }
+
+  .edu { list-style: none; margin: 0; padding: 0; max-width: var(--measure); }
+  .edu li { padding: .75rem 0; border-bottom: 1px solid var(--line); }
+  .edu li:first-child { padding-top: 0; }
+  .edu strong { display: block; }
+  .edu span { color: var(--slate); font-size: .95rem; }
+
+  footer { border-top: 1px solid var(--line); padding: 2rem 0 3rem; color: var(--slate); font-size: .95rem; }
+
+  @media (max-width: 860px) {
+    .hero { padding: 3rem 0 2.5rem; }
+    .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .layout { grid-template-columns: 1fr; gap: 3rem; }
+  }
+  @media (max-width: 520px) {
+    .areas { grid-template-columns: 1fr; }
+    .steps .what { font-size: .8rem; }
+  }
+
+  @media print {
+    @page { size: A4; margin: 14mm; }
+    body { background: #fff; font-size: 10.5pt; line-height: 1.45; }
+    .hero { padding: 0 0 6mm; border-bottom: 2px solid var(--ink); }
+    .hero h1 { font-size: 30pt; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .steps-box, .no-print { display: none !important; }
+    .contact a.btn { border: 0; padding: 0; background: none; color: var(--ink); }
+    .contact a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; }
+    main.wrap { padding-top: 6mm; padding-bottom: 0; }
+    .layout { grid-template-columns: 1fr 52mm; gap: 8mm; }
+    section + section { margin-top: 6mm; }
+    h2 { font-size: 14pt; margin-bottom: 3mm; }
+    .summary { font-size: 11pt; }
+    .job { padding-bottom: 5mm; break-inside: avoid; }
+    footer { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Ivom García</h1>
+      <p class="role">Gestión administrativa y operativa</p>
+      <p class="intro">Tecnóloga en Gestión de Negocios. Desde 2019 me encargo de que la administración de un negocio funcione en orden: facturación, documentos, cuentas, atención al cliente y coordinación de equipos. Trabajo 100&nbsp;% remoto desde Palmira, Colombia.</p>
+      <ul class="contact">
+        <li><a class="btn" href="mailto:ivom.fernanda.garcia@gmail.com">Escríbeme</a></li>
+        <li><a href="https://www.linkedin.com/in/ivomgarcia">LinkedIn</a></li>
+        <li><a href="https://www.upwork.com/freelancers/~01c7ef2c855678846c">Upwork</a></li>
+        <li class="no-print"><button class="btn ghost" type="button" onclick="window.print()">Descargar PDF</button></li>
+      </ul>
+    </div>
+
+    <div class="steps-box">
+      <ol class="steps" aria-label="Trayectoria profesional">
+        <li><span class="year">2019</span><span class="what">Asistente administrativa</span><span class="bar"></span></li>
+        <li><span class="year">2020</span><span class="what">Tesorera regional</span><span class="bar"></span></li>
+        <li><span class="year">2021</span><span class="what">Asistente virtual</span><span class="bar"></span></li>
+        <li><span class="year">Hoy</span><span class="what">Gestora de operaciones</span><span class="bar"></span></li>
+      </ol>
+      <p class="steps-caption">Cada etapa sumó más responsabilidad administrativa y de equipo.</p>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="layout">
+    <div>
+      <section aria-labelledby="perfil">
+        <h2 id="perfil">Perfil profesional</h2>
+        <p class="summary">Soy una profesional administrativa con experiencia en empresas de Colombia y España. Empecé como asistente administrativa, llevé la tesorería de una región entera y hoy coordino la operación y el equipo de una empresa española en remoto. Lo que mejor hago es poner orden: que las facturas salgan a tiempo, que cada documento esté donde debe y que el equipo sepa qué hacer. Además uso herramientas de inteligencia artificial para automatizar tareas administrativas repetitivas.</p>
+        <ul class="areas">
+          <li><strong>Facturación y contabilidad básica</strong><span>Emisión y registro de facturas, soportes de ingresos y egresos, movimientos contables.</span></li>
+          <li><strong>Gestión documental</strong><span>Preparación, revisión y archivo de documentos comerciales y de comercio exterior.</span></li>
+          <li><strong>Coordinación de equipos</strong><span>Seguimiento de tareas y comunicación con equipos remotos de hasta cuatro personas.</span></li>
+          <li><strong>Atención al cliente</strong><span>Respuesta por escrito a clientes y resolución de incidencias con proveedores y almacén.</span></li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="experiencia">
+        <h2 id="experiencia">Experiencia</h2>
+        <ol class="timeline" reversed>
+          <li class="job current">
+            <h3>Gestora de operaciones y proyectos</h3>
+            <p class="org">InnovaTec Sensorización y Comunicación S.L., España (remoto)</p>
+            <p class="when">Noviembre 2021 – actualidad. Ingresé como asistente virtual.</p>
+            <ul>
+              <li>Facturación del servicio y registro compartido con la dirección.</li>
+              <li>Coordinación de un equipo remoto de cuatro personas y seguimiento de tareas en ClickUp.</li>
+              <li>Elaboración de documentación de comercio exterior a partir de facturas comerciales y listas de empaque de proveedores.</li>
+              <li>Control de inventarios y reportes de ventas en Excel avanzado.</li>
+              <li>Atención por correo a clientes y coordinación con el almacén para resolver incidencias.</li>
+              <li>Automatización con IA de tareas administrativas: facturas, documentos e informes.</li>
+            </ul>
+          </li>
+
+          <li class="job current">
+            <h3>Freelance</h3>
+            <p class="org">Upwork (remoto)</p>
+            <p class="when">Julio 2022 – actualidad</p>
+            <ul>
+              <li>Diseño de una plantilla de contabilidad básica en Google Sheets para una pyme.</li>
+              <li>Traducción y adaptación de contenidos al español, y locución en español para proyectos de inteligencia artificial.</li>
+            </ul>
+          </li>
+
+          <li class="job">
+            <h3>Tesorera regional (voluntariado)</h3>
+            <p class="org">Iglesia Gnóstica Cristiana Universal, región Valle Centro</p>
+            <p class="when">Agosto 2020 – diciembre 2022</p>
+            <ul>
+              <li>Gestión financiera de la región: control de ingresos y egresos, soportes y movimientos contables.</li>
+              <li>Coordinación del equipo local de tesoreros.</li>
+              <li>Actualización de la plataforma virtual de usuarios de la región.</li>
+            </ul>
+          </li>
+
+          <li class="job">
+            <h3>Asistente administrativa</h3>
+            <p class="org">Huevos La Buena Cresta, Colombia</p>
+            <p class="when">Diciembre 2019 – marzo 2021</p>
+            <ul>
+              <li>Registro de movimientos contables.</li>
+              <li>Atención al cliente.</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="formacion">
+        <h2 id="formacion">Formación</h2>
+        <ul class="edu">
+          <li><strong>Tecnóloga en Gestión de Negocios</strong><span>Universidad Autónoma de Manizales, 2015</span></li>
+          <li><strong>Negocios Internacionales</strong><span>UNAD, pregrado a distancia, en curso</span></li>
+          <li><strong>Cursos complementarios</strong><span>Excel avanzado (2022), Power BI (2024), Asistente virtual y teletrabajo (2020), Importación de productos desde China (2023), Amazon FBA (2023–2024)</span></li>
+        </ul>
+      </section>
+    </div>
+
+    <aside>
+      <section aria-labelledby="competencias">
+        <h2 id="competencias">Competencias</h2>
+        <ul>
+          <li>Facturación</li>
+          <li>Contabilidad básica</li>
+          <li>Gestión documental</li>
+          <li>Control de inventarios</li>
+          <li>Reportes y análisis en Excel</li>
+          <li>Coordinación de equipos</li>
+          <li>Atención al cliente por escrito</li>
+          <li>Automatización con IA</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="herramientas">
+        <h2 id="herramientas">Herramientas</h2>
+        <ul class="tags">
+          <li>Excel avanzado</li>
+          <li>Google Workspace</li>
+          <li>Microsoft Office</li>
+          <li>Power BI</li>
+          <li>ClickUp</li>
+          <li>Trello</li>
+          <li>Notion</li>
+          <li>Asana</li>
+          <li>Slack</li>
+          <li>Claude (IA)</li>
+          <li>Canva</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="idiomas">
+        <h2 id="idiomas">Idiomas</h2>
+        <ul>
+          <li>Español<span>Nativo</span></li>
+          <li>Inglés<span>Básico (A2)</span></li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="proyecto">
+        <h2 id="proyecto">Negocio propio</h2>
+        <ul>
+          <li>DEL'AS, desde 2020<span>Administración completa: compras, inventario, precios, ventas y contabilidad básica.</span></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">Ivom Fernanda García Saac. Palmira, Valle del Cauca, Colombia.</div>
+</footer>
+
+</body>
+</html>
