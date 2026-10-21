@@ -61,8 +61,9 @@
   }
   .btn:hover { background: #185A4A; border-color: #185A4A; }
   .btn.ghost { background: transparent; color: var(--ledger); }
-  .mail { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
-  .mail .btn { overflow-wrap: anywhere; }
+  .mail, .mail-out { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+  [hidden] { display: none !important; }
+  #mail-link { font-weight: 600; overflow-wrap: anywhere; }
   .copy {
     font: inherit; font-size: .9rem; font-weight: 600; padding: .35rem .7rem; border-radius: 6px; cursor: pointer;
     border: 1px solid var(--line); background: var(--white); color: var(--ledger);
@@ -148,7 +149,7 @@
     .hero { padding: 0 0 6mm; border-bottom: 2px solid var(--ink); }
     .hero h1 { font-size: 30pt; }
     .hero-grid { grid-template-columns: 1fr; padding-top: 0; }
-    .steps-box, .no-print, .lang-bar { display: none !important; }
+    .steps-box, .no-print, .lang-bar, .mail { display: none !important; }
     .contact a.btn { border: 0; padding: 0; background: none; color: var(--ink); }
     .contact a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; }
     main.wrap { padding-top: 6mm; padding-bottom: 0; }
@@ -177,8 +178,11 @@
       <p class="intro" data-i18n="intro">Tecnóloga en Gestión de Negocios. Desde 2019 me encargo de que la administración de un negocio funcione en orden: facturación, documentos, cuentas, atención al cliente y coordinación de equipos. Trabajo 100&nbsp;% remoto desde Palmira, Colombia.</p>
       <ul class="contact">
         <li class="mail">
-          <a class="btn" href="mailto:ivom.fernanda.garcia@gmail.com">ivom.fernanda.garcia@gmail.com</a>
-          <button class="copy no-print" type="button" id="copy-email" data-i18n="copy">Copiar</button>
+          <button class="btn" type="button" id="show-email" data-i18n="email">Escríbeme</button>
+          <span class="mail-out" id="mail-out" hidden>
+            <a id="mail-link" href="#"></a>
+            <button class="copy" type="button" id="copy-email" data-i18n="copy">Copiar</button>
+          </span>
         </li>
         <li><a href="https://www.linkedin.com/in/ivomgarcia">LinkedIn</a></li>
         <li><a href="https://www.upwork.com/freelancers/~01c7ef2c855678846c">Upwork</a></li>
@@ -351,6 +355,7 @@
     docTitle: "Ivom García | Administrative and operations management",
     role: "Administrative and operations management",
     intro: "Business Management Technologist. Since 2019 I have been keeping business administration in order: invoicing, documents, accounts, customer service and team coordination. Native Spanish speaker, working 100% remotely from Palmira, Colombia.",
+    email: "Email me",
     copy: "Copy",
     copied: "Copied",
     pdf: "Download PDF",
@@ -444,9 +449,24 @@
     b.addEventListener("click", () => setLang(b.dataset.lang));
   });
 
+
+  // The address is assembled only when a visitor asks for it, so it never appears as plain text in the page.
+  const mailParts = ["moc.liamg", "aicrag.adnanref.movi"];
+  const mailAddress = () => mailParts[1].split("").reverse().join("") + String.fromCharCode(64) + mailParts[0].split("").reverse().join("");
+  const showBtn = document.getElementById("show-email");
+  const mailOut = document.getElementById("mail-out");
+  const mailLink = document.getElementById("mail-link");
   const copyBtn = document.getElementById("copy-email");
+  showBtn.addEventListener("click", () => {
+    const address = mailAddress();
+    mailLink.textContent = address;
+    mailLink.href = "mailto:" + address;
+    showBtn.hidden = true;
+    mailOut.hidden = false;
+    mailLink.focus();
+  });
   copyBtn.addEventListener("click", async () => {
-    const address = "ivom.fernanda.garcia@gmail.com";
+    const address = mailAddress();
     try {
       await navigator.clipboard.writeText(address);
     } catch (e) {
